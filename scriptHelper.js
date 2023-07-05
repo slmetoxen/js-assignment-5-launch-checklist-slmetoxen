@@ -31,11 +31,27 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    /* where are these parameters? should i get elements by ids here? 
-    const pilotName = document.getElementById("pilotName");
+    /* (Where are these parameters?) Get elements by ids here from the html statuscheck div and I'll need to use innerHTML to generate the text that will appear after submission but I  also need to use the event parameter and event.preventDefault() to stop the form submission if all input fields don't meet the requirements. */
 
+    let pilotStatus = document.getElementById("pilotStatus");
+    let copilotStatus = document.getElementById("copilotStatus");
+    let fuelStatus = document.getElementById("fuelStatus");
+    let cargoStatus = document.getElementById("cargoStatus");
+    let list = document.getElementById("faultyItems");
+    let launchStatus = document.getElementById("launchStatus");
+    /*??? Why aren't fuelStatus, cargoStatus, and launchStatus being read?*/
+    
 
-    if (validateInput(pilot) === "Empty" || */
+    if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
+        alert ("All fields are required.");
+    } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
+        alert ("Please enter vaild information for all required fields.")
+    } else {
+        pilotStatus.innerHTML = `Pilot${pilot} is ready for launch.`;
+        copilotStatus.innerHTML = `Co-pilot${copilot} is ready for launch.`;
+        /* ??? directions say if the user submits a fuel level that is too low (less than 10,000 liters), change faultyItems to visible? ex) element.style.aStyleProperty ?? with an updated fuel status stating that there is not enough fuel for the journey*/
+        div.style.visibility = "visible"
+        if (fuelLevel < 10000)
    
 }
 /* MY UNDERSTANDING--- We should prevent the form submission from happening until all inputs have valid values. We can use the event parameter and event.preventDefault() to stop the form submission
@@ -45,7 +61,10 @@ window.addEventListener("load", function() {
       form.addEventListener("submit", function(event) {
          let pilotNameInput = document.querySelector("input[name=pilotName]");
          let copilotNameInput = document.querySelector("input[name=copilotName]");
-         if (pilotNameInput.value === "" || copilotNameInput.value === "") {
+         let fuelInput = document.querySelector("input[name=fuelLevel]");
+         let cargoInput = document.querySelector("input[name=cargoMass]");
+    (if statements would follow here)
+          {
             alert("All fields are required!");
             event.preventDefault();
          }
@@ -63,10 +82,10 @@ async function myFetch() {
 
 function pickPlanet(planets) {
     let randomIndex = Math.floor(Math.random()*planets.length);    
-    return planets[randomIndex]
+    return planets[randomIndex];
 }
 
-/*module.exports.addDestinationInfo = addDestinationInfo;
+module.exports.addDestinationInfo = addDestinationInfo;
 module.exports.validateInput = validateInput;
 module.exports.formSubmission = formSubmission;
 module.exports.pickPlanet = pickPlanet; 
