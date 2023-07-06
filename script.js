@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { addDestinationInfo, formSubmission, validateInput, pickPlanet, myFetch  } = require("./scriptHelper");
+/*const { addDestinationInfo, formSubmission, validateInput, pickPlanet, myFetch  } = require("./scriptHelper");
 /* ??? validateInput & formSubmission are not being read can I use document.querySelectorAll*/
 window.addEventListener("load", function() {
 
@@ -18,7 +18,10 @@ window.addEventListener("load", function() {
    });
     let list = document.getElementById("faultyItems");
     let form = document.querySelector("form");
+
+/* Use the event parameter and event.preventDefault() to stop the form submission if all input fields don't meet the requirements.*/
     form.addEventListener("submit", function(event) {
+      /*if the below input fields don't meet the requirements stop submission with event.preventDefault()*/  
         let pilotNameInput = document.querySelector("input[name=pilotName]");
         let pilot = pilotNameInput.value;
 
@@ -31,7 +34,9 @@ window.addEventListener("load", function() {
         let cargoInput = document.querySelector("input[name=cargoMass]");
         let cargoLevel = cargoInput.value;
 
-        /*alert("All fields are required!");*/
         event.preventDefault();
+        /*else call formSubmission*/
+        formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) 
       });
+      
 });
