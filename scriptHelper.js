@@ -1,5 +1,5 @@
 // Write your helper functions here!
-/*require('isomorphic-fetch');*/
+require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    /* Here is the HTML formatting for our mission target div.
@@ -18,21 +18,21 @@ function addDestinationInfo(document, name, diameter, star, distance, moons, ima
 }
 /* MY COMMENTS FROM DIRECTIONS---validateInput() should take in a string as a parameter and return "Empty", "Not a Number", or "Is a Number" ...use validateInput() to complete the formSubmission() function */
 function validateInput(testInput) {
-    /* because input will return as a string I have to make it a number first */
-    let input = Number(testInput);
-    if (input === '') {
+    /* because all number inputs will return as a string I have to make number inputs actually be a number first */
+    let numInput = Number(testInput);
+    if (testInput === '') {
         return "Empty";
     }
-    if (isNaN(input) === true) {
+    else if (isNaN(numInput) === true) {
         return "Not a Number";
     }
-    if (isNaN(input) === false) {
+    else if (isNaN(numInput) === false) {
         return "Is a Number";
     }
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    /* (Where are these parameters?) Get elements by ids here from the html statuscheck div and I'll need to use innerHTML to generate the text that will appear after submission and I need to use the event parameter and event.preventDefault() to stop the form submission if all input fields don't meet the requirements. */
+    /* Get elements by ids here from the html statuscheck div and I'll need to use innerHTML to generate the text that will appear after submission. I need to use the event parameter and event.preventDefault() to stop the form submission if all input fields don't meet the requirements. */
 
     let pilotStatus = document.getElementById("pilotStatus");
     let copilotStatus = document.getElementById("copilotStatus");
@@ -46,8 +46,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     } else if (validateInput(pilot) === "Is a Number" || validateInput(copilot) === "Is a Number" || validateInput(fuelLevel) === "Not a Number" || validateInput(cargoLevel) === "Not a Number") {
         alert ("Please enter vaild information for all required fields.");
-    } /* directions say if the user submits a fuel level that is too low (less than 10,000 liters) && or if the user submits a cargo mass that is too large (more than 10,000 kilograms), change faultyItems to visible (ex) element.style.aStyleProperty-??) with an updated fuel status stating that there is not enough fuel for the journey && or updated cargo status stating that there is too much mass for the shuttle to take off. launchStatus, should also change to "Shuttle not ready for launch" and the color should change to red.*/
-      else {
+     /* directions say if the user submits a fuel level that is too low (less than 10,000 liters) &&/or if the user submits a cargo mass that is too large (more than 10,000 kilograms), change faultyItems to visible(--- ex) element.style.aStyleProperty-??) with an updated fuel status stating that there is not enough fuel for the journey &&/or updated cargo status stating that there is too much mass for the shuttle to take off. launchStatus, should also change to "Shuttle not ready for launch" and the color should change to red.*/
+    } else {
         list.style.visibility = "visible";
 
         pilotStatus.innerHTML = `Pilot ${pilot} is ready for launch.`;
