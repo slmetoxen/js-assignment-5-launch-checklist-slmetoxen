@@ -1,6 +1,6 @@
 // Write your JavaScript code here!
 
-const { addDestinationInfo, formSubmission, validateInput, pickPlanet, myFetch  } = require("./scriptHelper");
+//const { addDestinationInfo, formSubmission, validateInput, pickPlanet, myFetch  } = require("./scriptHelper");
 /* ??? validateInput & formSubmission are not being read can I use document.querySelectorAll*/
 window.addEventListener("load", function() {
 

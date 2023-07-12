@@ -1,5 +1,5 @@
 // Write your helper functions here!
-require('isomorphic-fetch');
+//require('isomorphic-fetch');
 
 function addDestinationInfo(document, name, diameter, star, distance, moons, imageUrl) {
    /* Here is the HTML formatting for our mission target div.
@@ -39,7 +39,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let fuelStatus = document.getElementById("fuelStatus");
     let cargoStatus = document.getElementById("cargoStatus");
     /*let list = document.getElementById("faultyItems"); /*??? Does this go in script instead?*/
-    
+    let launchStatus = document.getElementById("launchStatus");
   
     if (validateInput(pilot) === "Empty" || validateInput(copilot) === "Empty" || validateInput(fuelLevel) === "Empty" || validateInput(cargoLevel) === "Empty") {
         alert ("All fields are required.");
